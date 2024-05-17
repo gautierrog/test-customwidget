@@ -19,11 +19,13 @@
         document.getElementById('readout').innerHTML = JSON.stringify(record, null, 2);
       });
 
-      document.getElementById('submitButton').addEventListener('click', function() {
+      document.getElementById('submitButton').addEventListener('click', async function() {
           console.log(RECORD);
           console.log("HERE");
           console.log(grist);
-
+          
+          var table = await grist.getTable();
+          const {id} = await table.create(RECORD)
       });
     </script>
   </body>
